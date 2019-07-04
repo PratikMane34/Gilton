@@ -19,6 +19,6 @@ def create_user(doc,method=None):
    frappe.db.commit()
 
 @frappe.whitelist()
-def country_dep_currency(method=None):
-   print("Country dep Currency called//////////////")
-   # curr=frappe.db.get_value("")
+def country_dep_currency(country):
+   print("Country dep Currency called//////////////",country)
+    

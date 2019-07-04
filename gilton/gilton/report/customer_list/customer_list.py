@@ -15,13 +15,15 @@ def execute(filters=None):
 
 def get_data(filters):
 	query_data = frappe.db.sql("""
-		select c.name,q.name,sa.name, si.name  
+		select c.name,q.name,sa.name, si.name,dn.name  
 		
 		from `tabCustomer` as c
 		join  `tabQuotation` as q on q.customer_name = c.name
         join  `tabSales Order` as sa on sa.customer_name = c.name
         join  `tabSales Invoice` as si on si.customer_name = c.name
-		where {0}	
+        join  `tabDelivery Note` as dn on dn.customer_name = c.name
+		where {0}
+		group by sa.name	
 			""".format(validate_filters(filters)),debug=1)
 
 	return query_data	
@@ -63,14 +65,14 @@ def get_columns():
 			"width": 150
 		},
 		{
-			"fieldname": "si.name",
+			"fieldname": "name",
 			"label": _("Sales Invoice No"),
 			"fieldtype": "Link",
 			"options": "Qutation",
 			"width": 150
 		},
 		{
-			"fieldname": "",
+			"fieldname": "dn.name",
 			"label": _("Delivery Note"),
 			"fieldtype": "Link",
 			"options": "Qutation",
