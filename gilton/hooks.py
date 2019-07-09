@@ -68,11 +68,11 @@ msadjsasadsc
 # Permissions evaluated in scripted ways
 
 # permission_query_conditions = {
-# "Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
+# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
 #
 # has_permission = {
-# "Event": "frappe.desk.doctype.event.event.has_permission",
+# 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
 
 # Document Events
@@ -80,10 +80,10 @@ msadjsasadsc
 # Hook on document methods and events
 
 # doc_events = {
-# "*": {
-# "on_update": "method",
-# "on_cancel": "method",
-# "on_trash": "method"
+# 	"*": {
+# 		"on_update": "method",
+# 		"on_cancel": "method",
+# 		"on_trash": "method"
 #	}
 # }
 
@@ -91,21 +91,21 @@ msadjsasadsc
 # ---------------
 
 # scheduler_events = {
-# "all": [
-# "gilton.tasks.all"
-# ],
-# "daily": [
-# "gilton.tasks.daily"
-# ],
-# "hourly": [
-# "gilton.tasks.hourly"
-# ],
-# "weekly": [
-# "gilton.tasks.weekly"
-# ]
-# "monthly": [
-# "gilton.tasks.monthly"
-# ]
+# 	"all": [
+# 		"gilton.tasks.all"
+# 	],
+# 	"daily": [
+# 		"gilton.tasks.daily"
+# 	],
+# 	"hourly": [
+# 		"gilton.tasks.hourly"
+# 	],
+# 	"weekly": [
+# 		"gilton.tasks.weekly"
+# 	]
+# 	"monthly": [
+# 		"gilton.tasks.monthly"
+# 	]
 # }
 
 # Testing
@@ -117,7 +117,7 @@ msadjsasadsc
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# "frappe.desk.doctype.event.event.get_events": "gilton.event.get_events"
+# 	"frappe.desk.doctype.event.event.get_events": "gilton.event.get_events"
 # }
 
 
@@ -128,9 +128,9 @@ fixtures=['Custom Field','Property Setter','Role','Print Format']
 doc_events = {
 "Customer": {
  "validate":"gilton.gilton.Customization.Customer.user.create_user"
-
-
 },
+
+
 "Sales Order" : {
 	"validate":"gilton.gilton.Customization.Sales Order.sales_order.check_availability"
 },
@@ -148,7 +148,7 @@ doc_events = {
 
 
 doctype_js = {
-"Customer" :["custom/customer.js"],
-"Quotation":["custom/quotation.js"],
+		"Customer" :["custom/customer.js"],
+		"Quotation":["custom/quotation.js"],
         "Delivery Note":["custom/deliverynote.js"]
-}
+	}

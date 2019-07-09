@@ -23,7 +23,7 @@ def check_availability(doc,method):
 		
 			
 def check_stock():
-	doc=frappe.get_doc("Bin","MAT-BIN-2019-00004")
+	doc=frappe.get_doc("Bin","MAT-BIN-2019-00001")
 	actual_qty=doc.actual_qty
 	print(actual_qty)
 	return actual_qty
