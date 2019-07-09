@@ -3,7 +3,6 @@
 
 from __future__ import unicode_literals
 import frappe
-import frappe import _
 
 def execute(filters=None):
 	print"Hiiiii"
