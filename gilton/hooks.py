@@ -149,5 +149,6 @@ doc_events = {
 doctype_js = {
 		"Customer" :["custom/customer.js"],
 		"Quotation":["custom/quotation.js"],
-        "Delivery Note":["custom/deliverynote.js"]
+        "Delivery Note":["custom/deliverynote.js"],
+        "Salary Slip" : ["custom/salary_slip.js"]
 	}
