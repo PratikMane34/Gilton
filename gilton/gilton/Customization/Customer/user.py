@@ -2,11 +2,19 @@ from __future__ import unicode_literals
 import frappe
 import urllib2
 
+def hrUser(doc,method=None):
+    #print(doc.username)
+    print("+++++++++++++++++++++++++++++++++++++++++++")
+    open_count = frappe.db.sql("select prefered_email from tabEmployee where designation= 'HR Manager' limit 1")
+    print(open_count)
+    print("+++++++++++++++++++++++++++++++++++++++++++")
+    #exit()
 
 def create_user(doc,method=None):
-   
+
    new_cus = frappe.new_doc("User")
    new_cus.email=doc.email_address
+
    new_cus.username=doc.email_address
    full_name = doc.customer_name
    full_name = full_name.split(' ')
@@ -21,4 +29,3 @@ def create_user(doc,method=None):
 @frappe.whitelist()
 def country_dep_currency(country):
    print("Country dep Currency called//////////////",country)
-    

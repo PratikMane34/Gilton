@@ -1,209 +1,291 @@
 frappe.pages['dashboard'].on_page_load = function(wrapper) {
 	var page = frappe.ui.make_app_page({
 		parent: wrapper,
-		title: 'DashBoard',
+		title: 'Generic Dashboard',
 		single_column: true
 	});
-	$(frappe.render_template('sidebar')).appendTo(page.body);
 
-	get_lead_details()
+	doctype_list=get_doc_list()
+	doc_list_length = doctype_list.length
+	$(frappe.render_template('sidebar',{"doctype_list":doctype_list,"length":doc_list_length})).appendTo(page.body);
 
+	$("input[id='customer_name']").change(function(){
+		alert("first alert")
+		})
+	datacall(subscription_data[0])
+	sidebarClick()
+}
+
+function get_doc_list(){
+	frappe.call({
+		method:"gilton.gilton.page.dashboard.dashboard.get_doc_list",
+		async: false,
+		callback:function(r){
+			subscription_data = r.message
+			console.log("b",subscription_data)
+			}
+	});
+	console.log(subscription_data)
+	return subscription_data
+}
+
+
+
+function sidebarClick(){
+	console.log("sidebarClick ...")
 	$('.subscription_activation').click(function(){
+		var doc = ($('#subscription_activation').text())
+		$('li.active').removeClass('active');
+		$(this).addClass('active');
+		data=datacall(doc)
+
+		subscription_update_generic(data)
+		console.log("generic update in sidebar click")
+	})
+	$('.option1').click(function(){
+		$('li.active').removeClass('active');
+		$(this).addClass('active');
+		var doc = ($('#option1').text())
+		datacall(doc)
+	})
+	$('.option2').click(function(){
+		$('li.active').removeClass('active');
+		$(this).addClass('active');
+		var doc = ($('#option2').text())
+		datacall(doc)
+	})
+	$('.option3').click(function(){
+		alert($('#option3').text())
+		$('li.active').removeClass('active');
+		//get_opportunity_details()
+		$(this).addClass('active');
+		var doc = ($('#option3').text())
+		datacall(doc)
+
+	})
+	$('.option4').click(function(){
+		alert($('#option4').text())
+		var doc = ($('#option4').text())
+
 		frappe.call({
-		method: "gilton.gilton.page.dashboard.dashboard.get_lead_details",
-		async: false,
-		callback: function(r){
-			subscription_data = r.message
-			$('.main_page').html($(frappe.render_template('filters')))
-			$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+			method:"gilton.gilton.page.dashboard.dashboard.get_doc_filter",
+			args: {"doctype":doc},
+			callback:function(r){
+				if(r.message){
+					console.log("got doc filterszzzzzzzzzzzzzzzzzz")
+					console.log(r.message)
+					$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filter":['asd','qwe','zxcv']})))
+					//$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+				}
 			}
-		});
-		$('li.active').removeClass('active');
-		get_lead_details()
-		$(this).addClass('active');
+
+		})
 	})
-	$('.payment_receivable').click(function(){
-		$('li.active').removeClass('active');
-		get_opportunity_details()
-		$(this).addClass('active');
+	$('.option5').click(function(){
+		alert($('#option5').text())
+		var doc = ($('#option5').text())
+
+		frappe.call({
+			method:"gilton.gilton.page.dashboard.dashboard.get_doc_filter",
+			args: {"doctype":doc},
+			callback:function(r){
+				if(r.message){
+					console.log("got doc filterszzzzzzzzzzzzzzzzzz")
+					console.log(r.message)
+					$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filter":['asd','qwe','zxcv']})))
+					//$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+				}
+			}
+
+		})
 	})
-	$('.trusted_driver').click(function(){
-		$('li.active').removeClass('active');
-		// trusted_driver()
-		$(this).addClass('active');
+	$('.option6').click(function(){
+		alert($('#option6').text())
+		var doc = ($('#option6').text())
+
+		frappe.call({
+			method:"gilton.gilton.page.dashboard.dashboard.get_doc_filter",
+			args: {"doctype":doc},
+			callback:function(r){
+				if(r.message){
+					console.log("got doc filterszzzzzzzzzzzzzzzzzz")
+					console.log(r.message)
+					$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filter":['asd','qwe','zxcv']})))
+					//$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+				}
+			}
+
+		})
+	})
+	$('.option7').click(function(){
+		alert($('#option7').text())
+		var doc = ($('#option7').text())
+
+		frappe.call({
+			method:"gilton.gilton.page.dashboard.dashboard.get_doc_filter",
+			args: {"doctype":doc},
+			callback:function(r){
+				if(r.message){
+					console.log("got doc filterszzzzzzzzzzzzzzzzzz")
+					console.log(r.message)
+					$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filter":['asd','qwe','zxcv']})))
+					//$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+				}
+			}
+
+		})
+	})
+	$('.option8').click(function(){
+		alert($('#option8').text())
+		var doc = ($('#option8').text())
+
+		frappe.call({
+			method:"gilton.gilton.page.dashboard.dashboard.get_doc_filter",
+			args: {"doctype":doc},
+			callback:function(r){
+				if(r.message){
+					console.log("got doc filterszzzzzzzzzzzzzzzzzz")
+					console.log(r.message)
+					$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filter":['asd','qwe','zxcv']})))
+					//$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+				}
+			}
+
+		})
+	})
+	$('.option9').click(function(){
+		alert($('#option9').text())
+		var doc = ($('#option9').text())
+
+		frappe.call({
+			method:"gilton.gilton.page.dashboard.dashboard.get_doc_filter",
+			args: {"doctype":doc},
+			callback:function(r){
+				if(r.message){
+					console.log("got doc filterszzzzzzzzzzzzzzzzzz")
+					console.log(r.message)
+					$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filter":['asd','qwe','zxcv']})))
+					//$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+				}
+			}
+
+		})
 	})
 
 }
+function datacall(doc){
+	console.log("?///////// inside datacall")
+	//filter_search()
 
-function get_lead_details(){
+	var subscription_data=''
 	frappe.call({
-		method: "gilton.gilton.page.dashboard.dashboard.get_lead_details",
+		method:"gilton.gilton.page.dashboard.dashboard.get_data",
+		args: {"doctype":doc},
 		async: false,
-		callback: function(r){
-			subscription_data = r.message
-			$('.main_page').html($(frappe.render_template('filters',{"doctype":'Lead'})))
-			$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
+		callback:function(r){
+			if(r.message){
+				console.log
+				data=r.message
+				subscription_data =r.message.record
+				$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filters":r.message.filter})))
+				$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"records":r.message})))
+				//subscription_update(r.message)
+
+			}
 		}
 	});
-	subscription_update()
+	subscription_update_generic(data)
+	console.log("datacall resp",data.filter)
+	filter_call(doc)
+	return data
+//filter_call(doc)
+}
+function get_data(doc,filters){
+	console.log(filters)
+	frappe.call({
+		method:"gilton.gilton.page.dashboard.dashboard.get_data",
+		args: {"doctype":doc,
+						"filters":filters
+						},
+		callback:function(r){
+			if(r.message){
+				var subscription_data =r.message.record
+				$('.main_page').html($(frappe.render_template('filters',{"doctype":doc,"filters":r.message.filter})))
+				$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"records":r.message})))
+				//subscription_update(r.message)
+				subscription_update_generic(r.message)
+				filter_call(doc)
 
-	$("select[name='lead_status']").change(function(){
-		filters = get_filters()
-		fetch_data(filters)
-	})
-	$("input[type='date'][name='from_date']").change(function(){
-		filters = get_filters()
-		fetch_data(filters)
-	})
-	$("input[type='date'][name='to_date']").change(function(){
-		filters = get_filters()
-		fetch_data(filters)
-	})
-
-	function get_filters() {
-		return filters={
-			"from_date": is_null($("input[type='date'][name='from_date']").val()) ? "" : $("input[type='date'][name='from_date']").val(),
-			"to_date": is_null($("input[type='date'][name='to_date']").val()) ? "" : $("input[type='date'][name='to_date']").val(),
-			"lead_status": is_null($("select[name='lead_status']").val()) ? "" : $("select[name='lead_status']").val(),
-		}
-	}
-
-	function fetch_data(filters){
-		frappe.call({
-			method: "gilton.gilton.page.dashboard.dashboard.get_lead_details",
-			async: false,
-			args: {"filters":filters},
-			callback: function(r){
-				subscription_data = r.message
-				$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"subscription_data":subscription_data})))
-			}
-		})
-		subscription_update()
-
-	}
-
-function subscription_update(){
-		$.getScript("https://www.gstatic.com/charts/loader.js",function(){
-			google.charts.load('current', {packages: ['bar','corechart']});
-		  	google.charts.setOnLoadCallback(drawChart);
-			// Subscription Bar chart
-			function drawChart() {
-				 // Party Status Pie Chart
-				google.charts.setOnLoadCallback(function(){
-					var data = google.visualization.arrayToDataTable(subscription_data.status);
-			        var options = {
-			          title: 'Status',
-			          chartArea: {left:20,top:20,width:'100%',height:'75%'}
-			        };
-			        var chart = new google.visualization.PieChart(document.getElementById('status'));
-			        chart.draw(data, options);
-				});
-		    };
-
-		})
-		const assets = [
-			"/assets/gilton/datatable/clusterize.min.js",
-			"/assets/gilton/datatable/Sortable.min.js",
-			"/assets/gilton/datatable/frappe-datatable.min.js",
-			"/assets/gilton/datatable/frappe-datatable.min.css",
-		]
-
-		frappe.require(assets, () => {
-			var datatable = new DataTable('#datatable', {
-				columns: ['Lead Id','Lead Name','Comapny Name','Status',
-					'Address','State','Pincode','Country',
-					'Phone','Mobile No','Email id',
-					'Lead Owner','Source','Territory','Owner'],
-				data: subscription_data.subscription_table });
-		})
-	}
+}
+}
+});
 }
 
-function get_opportunity_details(){
-	frappe.call({
-		method: "gilton.gilton.page.dashboard.dashboard.get_opportunity_details",
-		async: false,
-		callback: function(r){
-			opportunity_data = r.message
-			$('.main_page').html($(frappe.render_template('filters',{"doctype":'Opportunity'})))
-			$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"opportunity_data":opportunity_data})))
-		}
-	});
-	opportunity_update()
-
-	$("select[name='opportunity_status']").change(function(){
-		filters = get_filters()
-		fetch_data(filters)
+function filter_call(doc){
+	//alert("filter call")
+	$("input[id='customer_name']").change(function(){
+		filters=get_filters()
+		get_data(doc,filters)
+		})
+	$("input[id='email_address']").change(function(){
+		console.log("email filter is working outside the for loop")
+		filters=get_filters()
+		get_data(doc,filters)
 	})
-	$("input[type='date'][name='from_date']").change(function(){
-		filters = get_filters()
-		fetch_data(filters)
+	$("input[id='mobile']").change(function(){
+		console.log("mobile filter is working outside the for loop")
+		filters=get_filters()
+		get_data(doc,filters)
 	})
-	$("input[type='date'][name='to_date']").change(function(){
-		filters = get_filters()
-		fetch_data(filters)
-	})
-
-	function get_filters() {
+}
+function get_filters(){
 		return filters={
-			"from_date": is_null($("input[type='date'][name='from_date']").val()) ? "" : $("input[type='date'][name='from_date']").val(),
-			"to_date": is_null($("input[type='date'][name='to_date']").val()) ? "" : $("input[type='date'][name='to_date']").val(),
-			"opportunity_status": is_null($("select[name='opportunity_status']").val()) ? "" : $("select[name='opportunity_status']").val(),
+		"customer_name": is_null($("input[id='customer_name']").val()) ? null : $("input[id='customer_name']").val(),
+		"creation": is_null($("input[id='creation']").val()) ? null : $("input[id='creation']").val(),
+		"email_address": is_null($("input[id='email_address']").val()) ? null : $("input[id='email_address']").val(),
+		"mobile": is_null($("input[id='mobile").val()) ? null : $("input[id='mobile']").val()
 		}
-	}
+}
 
-	function fetch_data(filters){
-		frappe.call({
-			method: "gilton.gilton.page.dashboard.dashboard.get_opportunity_details",
-			async: false,
-			args: {"filters":filters},
-			callback: function(r){
-				opportunity_data = r.message
-				$('.subscription_activation_main').html($(frappe.render_template('dashboard',{"opportunity_data":opportunity_data})))
-			}
-		})
-		opportunity_update()
 
-	}
+function subscription_update_generic(records){
+	$.getScript("https://www.gstatic.com/charts/loader.js",function(){
+		google.charts.load('current', {packages: ['bar','corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+		// Subscription Bar chart
+		function drawChart() {
+			 // Party Status Pie Chart
+			google.charts.setOnLoadCallback(function(){
 
-	function opportunity_update(){
-		$.getScript("https://www.gstatic.com/charts/loader.js",function(){
-			google.charts.load('current', {packages: ['bar','corechart']});
-		  	google.charts.setOnLoadCallback(drawChart);
-			// Subscription Bar chart
-			function drawChart() {
-				 // Party Status Pie Chart
-				google.charts.setOnLoadCallback(function(){
-					var data = google.visualization.arrayToDataTable(opportunity_data.status);
-			        var options = {
-			          title: 'Status',
-			          chartArea: {left:20,top:20,width:'100%',height:'75%'}
-			        };
-			        var chart = new google.visualization.PieChart(document.getElementById('status'));
-			        chart.draw(data, options);
-				});
-		    };
+				var data = google.visualization.arrayToDataTable([
+					["Status","Count"],
+					["Active",5],
+					["InActive",1]
+				]);
+						var options = {
+							title: 'Status',
+							chartArea: {left:20,top:20,width:'100%',height:'75%'}
+						};
+						var chart = new google.visualization.PieChart(document.getElementById('status'));
+						chart.draw(data, options);
+			});
+			};
 
-		})
-		const assets = [
-			"/assets/gilton/datatable/clusterize.min.js",
-			"/assets/gilton/datatable/Sortable.min.js",
-			"/assets/gilton/datatable/frappe-datatable.min.js",
-			"/assets/gilton/datatable/frappe-datatable.min.css",
-		]
-
-		frappe.require(assets, () => {
-			var datatable = new DataTable('#datatable', {
-				columns: ['Enquiry From','Opportunity Type','Lead','Status',
-					'Customer Name','Mins To First Response','Customer Type','Contact By',
-					'To Discuss','Contact Date','Reminder Date',
-					'Customer Address','Contact Person','Territory','Contact Display',
-					'Customer Group','Contact Email','Contact Mobile','Source','Company','City',
-					'Transaction Date','Enquiry id','Name Of Competitor','Enquiry Category',
-					'Expected Purchase Rate','Enquiry Closure Date','Sales Stage',
-					'SIC Code Type','Channel','SIC Code','Reason For Enquiry Lost','Sales Partner',
-					'Sales Won Reason','Item Code','Quantity','Item Name'],
-				data: opportunity_data.opportunity_table });
-		})
-	}
+	})
+	const assets = [
+		"/assets/gilton/datatable/clusterize.min.js",
+		"/assets/gilton/datatable/Sortable.min.js",
+		"/assets/gilton/datatable/frappe-datatable.min.js",
+		"/assets/gilton/datatable/frappe-datatable.min.css",
+	]
+	frappe.require(assets, () => {
+		var datatable = new DataTable('#datatable', {
+			// columns: ['Lead Id','Lead Name','Comapny Name','Status',
+			// 	'Address','State','Pincode','Country',
+			// 	'Phone','Mobile No','Email id',
+			// 	'Lead Owner','Source','Territory','Owner'],
+			columns:records.columns,
+			data: records.record
+		 });
+	})
 }

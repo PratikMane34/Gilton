@@ -1,59 +1,16 @@
 <div class="main-panel">
     <div class="content">
     <div class="row">
+      {%for filter in filters%}
             <div class="filter_search">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>From Date</label>
-                        <input type="date" name="from_date" id="from_date" class="form-control">
+                        <label>{{filter.label}}</label>
+                        <input type={{filter.fieldtype}} option={{filter.option}} name={{filter.field_name}} id={{filter.field_name}} class="form-control">
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>To Date</label>
-                        <input type="date" name="to_date" id="to_date" class="form-control">
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {% if doctype == "Lead" %}
-                            <label>Lead Status</label>
-                            <select class="form-control" name="lead_status" id="lead_status">
-                                <option></option>
-                                <option>Active</option>
-                                <option>Inactive</option>
-                                <option>Lead</option>
-                                <option>Open</option>
-                                <option>Replied</option>
-                                <option>Opportunity</option>
-                                <option>Quotation</option>
-                                <option>Lost Quotation</option>
-                                <option>Interested</option>
-                                <option>Converted</option>
-                                <option>Do Not Contact</option>
-                                <option>Dispatched</option>
-                            </select>
-                        {% endif %}
-                        {% if doctype == "Opportunity" %}
-                            <label>Opportunity Status</label>
-                            <select class="form-control" name="opportunity_status" id="opportunity_status">
-                                <option></option>
-                                <option>Open</option>
-                                <option>Quote Generated</option>
-                                <option>To Be Quoted</option>
-                                <option>Not To Be Quoted</option>
-                                <option>Order Lost</option>
-                                <option>Close Without Sale</option>
-                                <option>Converted</option>
-                                <option>Closed</option>
-                            </select>
-                        {% endif %}
-
-                    </div>
-                </div>
-
             </div>
+            {%endfor%}
         </div>
     <hr>
     <div class="subscription_activation_main"></div>

@@ -1,6 +1,8 @@
 {
-	"js/dairy.desk.min.css": [
-		"public/dashboard/dashboard.css"
+	"css/gilton.css": [
+		"public/css/ilta.css"
+	],
+	"js/abcd.js":[
+		"public/js/chart.js"
 	]
-
 }

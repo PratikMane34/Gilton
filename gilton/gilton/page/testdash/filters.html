@@ -1,0 +1,165 @@
+<div class="main-panel">
+    <div class="content">
+    <div class="row">
+            <div class="filter_search">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>From Date</label>
+                        <input type="date" name="from_date" id="from_date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>To Date</label>
+                        <input type="date" name="to_date" id="to_date" class="form-control">
+                    </div>
+                </div>
+              
+                {% if doctype == "Quotation" %}
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <select class="form-control" name="customer_name" id="customer_name">
+                           {% for s in quotation_data.customer_name %}
+                               <option>{{ s }}</option>
+                           {% endfor %}
+                       </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Item Name</label>
+                        <select class="form-control" name="item_name" id="item_name">
+                           <option></option>
+                           {% for s in quotation_data.item_name %}
+                               <option>{{ s }}</option>
+                           {% endfor %}
+                       </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Quotation Name</label>
+                        <select class="form-control" name="quotation_name" id="quotation_name">
+                           <option></option>
+                           {% for s in quotation_data.quotation_name %}
+                               <option>{{s}}</option>
+                           {% endfor %}
+                       </select>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if doctype == "Lead" %}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <select class="form-control" name="company_name" id="company_name">
+                               <option></option>
+                               {% for s in lead_data.company_name %}
+                                   <option>{{s}}</option>
+                               {% endfor %}
+                           </select>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Lead Id</label>
+                            <select class="form-control" name="lead_id" id="lead_id">
+                               {% for s in lead_data.lead_id %}
+                                   <option></option>
+                                   <option>{{s}}</option>
+                               {% endfor %}
+                           </select>
+                        </div>
+                    </div>
+                {% endif %} 
+                {% if doctype == "Opportunity" %}
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Customer Name</label>
+                            <select class="form-control" name="customer_name" id="customer_name">
+                               <option></option>
+                               {% for s in opportunity_data.customer_name %}
+                                   <option>{{s}}</option>
+                               {% endfor %}
+                           </select>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Opportunity Name</label>
+                            <select class="form-control" name="opportunity_name" id="opportunity_name">
+                               {% for s in opportunity_data.opportunity_name %}
+                                   <option></option>
+                                   <option>{{s}}</option>
+                               {% endfor %}
+                           </select>
+                        </div>
+                    </div>
+                {% endif %}   
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {% if doctype == "Lead" %}
+                            <label>Lead Status</label>
+                            <select class="form-control" name="lead_status" id="lead_status">
+                                <option></option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Lead</option>
+                                <option>Open</option>
+                                <option>Replied</option>
+                                <option>Opportunity</option>
+                                <option>Quotation</option>
+                                <option>Lost Quotation</option>
+                                <option>Interested</option>
+                                <option>Converted</option>
+                                <option>Do Not Contact</option>
+                                <option>Dispatched</option>
+                            </select>
+                           
+                        {% endif %}
+                        {% if doctype == "Opportunity" %}
+                            <label>Opportunity Status</label>
+                            <select class="form-control" name="opportunity_status" id="opportunity_status">
+                                <option></option>
+                                <option>Open</option>
+                                <option>Quote Generated</option>
+                                <option>To Be Quoted</option>
+                                <option>Not To Be Quoted</option>
+                                <option>Order Lost</option>
+                                <option>Close Without Sale</option>
+                                <option>Converted</option>
+                                <option>Closed</option>
+                            </select>
+                        {% endif %}
+                        {% if doctype == "Quotation" %}
+                            <label>Quotation Status</label>
+                            <select class="form-control" name="quotation_status" id="quotation_status">
+                                <option></option>
+                                <option>Draft</option>
+                                <option>Submitted</option>
+                                <option>Ordered</option>
+                                <option>Lost</option>
+                                <option>Cancelled</option>
+                                <option>Open</option>
+                                <option>Replied</option>
+                            </select>
+
+                        {% endif %}
+                    </div>
+
+                </div>
+              
+            </div>
+    <hr>
+    <div class="subscription_activation_main"></div>
+        <div class="content">
+            <div class="row">
+                <div class="card table_card">
+                    <div id="datatable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

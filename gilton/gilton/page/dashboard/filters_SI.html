@@ -1,0 +1,62 @@
+<div class="main-panel">
+    <div class="content">
+
+    <div class="row">
+            <div class="filter_search">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>From Date</label>
+                        <input type="date" name="from_date" id="from_date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>To Date</label>
+                        <input type="date" name="to_date" id="to_date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        {% if doctype == "Sales Invoice" %}
+                            <label>Sales Invoice Status</label>
+                            <select class="form-control" name="lead_status" id="lead_status">
+                                <option></option>
+                                <option>Draft</option>
+                                <option>Submitted</option>
+                                <option>Paid</option>
+                                <option>Overdue</option>
+                                <option>Cancelled</option>
+                            </select>
+                        {% endif %}
+                        {% if doctype == "Opportunity" %}
+                            <label>Opportunity Status</label>
+                            <select class="form-control" name="opportunity_status" id="opportunity_status">
+                                <option></option>
+                                <option>Open</option>
+                                <option>Quote Generated</option>
+                                <option>To Be Quoted</option>
+                                <option>Not To Be Quoted</option>
+                                <option>Order Lost</option>
+                                <option>Close Without Sale</option>
+                                <option>Converted</option>
+                                <option>Closed</option>
+                            </select>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <hr>
+    <div class="subscription_activation_main"></div>
+        <div class="content">
+            <div class="row">
+                <div class="card table_card">
+                    <div id="datatable"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

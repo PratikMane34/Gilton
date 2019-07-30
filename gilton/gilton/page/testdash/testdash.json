@@ -1,0 +1,23 @@
+{
+ "content": null, 
+ "creation": "2019-07-20 18:29:18.209644", 
+ "docstatus": 0, 
+ "doctype": "Page", 
+ "idx": 0, 
+ "modified": "2019-07-20 18:29:18.209644", 
+ "modified_by": "Administrator", 
+ "module": "Gilton", 
+ "name": "testdash", 
+ "owner": "Administrator", 
+ "page_name": "TestDash", 
+ "roles": [
+  {
+   "role": "Administrator"
+  }
+ ], 
+ "script": null, 
+ "standard": "Yes", 
+ "style": null, 
+ "system_page": 0, 
+ "title": "TestDash"
+}

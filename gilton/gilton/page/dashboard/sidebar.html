@@ -1,30 +1,86 @@
 <!-- Sidebar -->
-<div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+<div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
   <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="" class="simple-text">
-                iLogistic Admin
-            </a>
+            <a href="" class="simple-text"> MSRLM </a>
         </div>
+        {% for doctype in subscription_data %}
+
+
+          {% endfor %}
+
         <ul class="nav">
             <li class="active subscription_activation">
                 <a>
                     <i class="fa fa-check"></i>
-                    <p>Lead</p>
+                    <label id="subscription_activation" >{{ subscription_data[0] }}</label>
+                    <!-- <p id ='subscription_activation_SI'>{{ subscription_data[0] }}</p> -->
                 </a>
             </li>
-            <li class="payment_receivable">
+            <li class="option1">
                 <a>
                     <i class="fa fa-money"></i>
-                    <p>Opportunity</p>
+                    <label id="option1" >{{ subscription_data[1] }}</label>
+
                 </a>
             </li>
-            <li class="trusted_driver">
+            <li class="option2">
                 <a>
                     <i class="fa fa-id-card-o"></i>
-                    <p>Quotation</p>
+                    <label id="option2" >{{ subscription_data[2] }}</label>
+
                 </a>
             </li>
+            <li class="option3">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option3" >{{ subscription_data[3] }}</label>
+
+                </a>
+            </li>
+            <li class=" option4">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option4" >{{ subscription_data[4] }}</label>
+
+                </a>
+            </li>
+            <li class=" option5">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option5" >{{ subscription_data[5] }}</label>
+
+                </a>
+            </li>
+            <li class=" option6">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option6" >{{ subscription_data[6] }}</label>
+
+                </a>
+            </li>
+            <li class=" option7">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option7" >{{ subscription_data[7] }}</label>
+
+                </a>
+            </li>
+            <li class= "option8">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option8" >{{ subscription_data[8] }}</label>
+
+                </a>
+            </li>
+            <li class=" option9">
+                <a>
+                    <i class="fa fa-check"></i>
+                    <label id="option9" >{{ subscription_data[9] }}</label>
+
+                </a>
+            </li>
+
         </ul>
   </div>
 </div>
